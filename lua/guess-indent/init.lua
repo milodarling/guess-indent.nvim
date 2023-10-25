@@ -54,7 +54,7 @@ local function is_comment_block_start(line)
 end
 
 local function set_indentation(indentation)
-  local function set_buffer_opt(buffer, name, value)
+  local function set_buffer_opt(name, value)
     -- Setting an option takes *significantly* more time than reading it.
     -- This wrapper function only sets the option if the new value differs
     -- from the current value.
@@ -65,15 +65,15 @@ local function set_indentation(indentation)
   end
 
   if indentation == "tabs" then
-    set_buffer_opt(0, "expandtab", false)
+    set_buffer_opt("expandtab", false)
     print("Did set indentation to tabs.")
   elseif type(indentation) == "number" and indentation > 0 then
-    set_buffer_opt(0, "expandtab", true)
-    set_buffer_opt(0, "tabstop", indentation)
-    set_buffer_opt(0, "softtabstop", indentation)
-    set_buffer_opt(0, "shiftwidth", indentation)
-    set_buffer_opt(0, "shiftwidth", indentation)
-    set_buffer_opt(0, "breakindentopt", "shift:" .. math.floor(indentation / 2))
+    set_buffer_opt("expandtab", true)
+    set_buffer_opt("tabstop", indentation)
+    set_buffer_opt("softtabstop", indentation)
+    set_buffer_opt("shiftwidth", indentation)
+    set_buffer_opt("shiftwidth", indentation)
+    set_buffer_opt("breakindentopt", "shift:" .. math.floor(indentation / 2))
     print("Did set indentation to", indentation, "spaces.")
   else
     print("Failed to detect indentation style.")
