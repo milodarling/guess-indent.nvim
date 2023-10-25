@@ -58,9 +58,9 @@ local function set_indentation(indentation)
     -- Setting an option takes *significantly* more time than reading it.
     -- This wrapper function only sets the option if the new value differs
     -- from the current value.
-    local current = vim.api.nvim_buf_get_option(buffer, name)
+    local current = vim.api.nvim_get_option_value(name, {})
     if value ~= current then
-      vim.api.nvim_buf_set_option(buffer, name, value)
+      vim.api.nvim_set_option_value(name, value, {})
     end
   end
 
