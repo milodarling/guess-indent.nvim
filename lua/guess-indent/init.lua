@@ -73,7 +73,7 @@ local function set_indentation(indentation)
     set_buffer_opt(0, "softtabstop", indentation)
     set_buffer_opt(0, "shiftwidth", indentation)
     set_buffer_opt(0, "shiftwidth", indentation)
-    set_buffer_opt(0, "breakindentopt", math.floor(indentation / 2))
+    set_buffer_opt(0, "breakindentopt", "shift:" .. math.floor(indentation / 2))
     print("Did set indentation to", indentation, "spaces.")
   else
     print("Failed to detect indentation style.")
